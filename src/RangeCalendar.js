@@ -82,6 +82,7 @@ const RangeCalendar = createReactClass({
     mode: PropTypes.arrayOf(PropTypes.oneOf(['date', 'month', 'year', 'decade'])),
     showDateInput: PropTypes.bool,
     timePicker: PropTypes.any,
+	weekDayStyle: PropTypes.oneOf(['long', 'short', 'veryShort']),
     showOk: PropTypes.bool,
     showToday: PropTypes.bool,
     defaultSelectedValue: PropTypes.array,
@@ -595,7 +596,7 @@ const RangeCalendar = createReactClass({
     const {
       prefixCls, dateInputPlaceholder,
       timePicker, showOk, locale, showClear,
-      showToday, type, clearIcon,
+      showToday, type, clearIcon, weekDayStyle,
     } = props;
     const {
       hoverValue,
@@ -688,6 +689,7 @@ const RangeCalendar = createReactClass({
               format={this.getFormat()}
               value={startValue}
               mode={mode[0]}
+			  weekDayStyle={weekDayStyle}
               placeholder={placeholder1}
               onInputSelect={this.onStartInputSelect}
               onValueChange={this.onStartValueChange}

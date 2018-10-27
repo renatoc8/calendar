@@ -16,6 +16,7 @@ const CalendarPart = createReactClass({
     locale: PropTypes.any,
     showDateInput: PropTypes.bool,
     showTimePicker: PropTypes.bool,
+	weekDayStyle: PropTypes.oneOf(['long', 'short', 'veryShort']),
     format: PropTypes.any,
     placeholder: PropTypes.any,
     disabledDate: PropTypes.any,
@@ -40,7 +41,7 @@ const CalendarPart = createReactClass({
       disabledDate, timePicker, disabledTime,
       timePickerDisabledTime, showTimePicker,
       onInputSelect, enablePrev, enableNext,
-      clearIcon,
+      clearIcon, weekDayStyle,
     } = props;
     const shouldShowTimePicker = showTimePicker && timePicker;
     const disabledTimeConfig = shouldShowTimePicker && disabledTime ?
@@ -51,6 +52,7 @@ const CalendarPart = createReactClass({
       value,
       prefixCls,
       showTimePicker,
+	  weekDayStyle,
     };
     const index = direction === 'left' ? 0 : 1;
     const timePickerEle = shouldShowTimePicker &&

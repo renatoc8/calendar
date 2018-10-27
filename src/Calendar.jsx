@@ -29,6 +29,7 @@ const Calendar = createReactClass({
     showWeekNumber: PropTypes.bool,
     showToday: PropTypes.bool,
     showOk: PropTypes.bool,
+	weekDayStyle: PropTypes.oneOf(['long', 'short', 'veryShort']),
     onSelect: PropTypes.func,
     onOk: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -273,6 +274,7 @@ const Calendar = createReactClass({
               onSelect={this.onDateTableSelect}
               disabledDate={disabledDate}
               showWeekNumber={props.showWeekNumber}
+			  weekDayStyle={props.weekDayStyle}
             />
           </div>
 

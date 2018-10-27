@@ -9,7 +9,6 @@ class DateTHead extends React.Component {
     const value = props.value;
     const localeData = value.localeData();
     const prefixCls = props.prefixCls;
-    const veryShortWeekdays = [];
     const weekDays = [];
     const firstDayOfWeek = localeData.firstDayOfWeek();
     let showWeekNumberEl;
@@ -17,8 +16,34 @@ class DateTHead extends React.Component {
     for (let dateColIndex = 0; dateColIndex < DateConstants.DATE_COL_COUNT; dateColIndex++) {
       const index = (firstDayOfWeek + dateColIndex) % DateConstants.DATE_COL_COUNT;
       now.day(index);
-      veryShortWeekdays[dateColIndex] = localeData.weekdaysMin(now);
-      weekDays[dateColIndex] = localeData.weekdaysShort(now);
+      if (props.weekDayStyle) {
+		  switch (props.weekDayStyle) {
+			  case "long":
+				weekDays[dateColIndex] = {
+				  title: localeData.weekdaysShort(now),
+				  displayValue: localeData.weekdays(now),
+				};
+				break;
+			case "short":
+			  weekDays[dateColIndex] = {
+				title: localeData.weekdaysShort(now),
+				displayValue: localeData.weekdaysShort(now),
+			  };
+			  break;
+			case "veryShort":
+			default:
+			  weekDays[dateColIndex] = {
+				title: localeData.weekdaysShort(now),
+				displayValue: localeData.weekdaysMin(now),
+			  };
+			  break;
+		  }
+	  } else {
+	    weekDays[dateColIndex] = {
+		  title: localeData.weekdaysShort(now),
+		  displayValue: localeData.weekdaysMin(now),
+		};
+	  }
     }
 
     if (props.showWeekNumber) {
@@ -35,11 +60,11 @@ class DateTHead extends React.Component {
         <th
           key={xindex}
           role="columnheader"
-          title={day}
+          title={day.title}
           className={`${prefixCls}-column-header`}
         >
           <span className={`${prefixCls}-column-header-inner`}>
-          {veryShortWeekdays[xindex]}
+          {day.displayValue}
           </span>
         </th>);
     });

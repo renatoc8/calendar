@@ -8,6 +8,8 @@ import { Moment } from 'moment';
 
 export type Mode = 'time' | 'date' | 'month' | 'year' | 'decade';
 
+export type WeekdayStyle = 'long' | 'short' | 'veryShort';
+
 export interface Props {
   prefixCls?: string;
   className?: string;
@@ -21,6 +23,7 @@ export interface Props {
   showWeekNumber?: boolean;
   showToday?: boolean;
   showOk?: boolean;
+  weekDayStyle?: WeekdayStyle;
   onSelect?: (date: Moment) => void;
   onOk?: () => void;
   onKeyDown?: () => void;

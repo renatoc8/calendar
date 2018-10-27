@@ -160,6 +160,7 @@ describe('RangeCalendar', () => {
     const wrapper = mount(
       <RangeCalendar
         format={format}
+		weekDayStyle="veryShort"
         onSelect={onSelect}
         defaultValue={[now, now.clone().add(1, 'months')]}
         showWeekNumber
@@ -182,6 +183,7 @@ describe('RangeCalendar', () => {
     const wrapper = mount(
       <RangeCalendar
         format={format}
+		weekDayStyle="veryShort"
         onSelect={onSelect}
         defaultValue={[now, now.clone().add(1, 'months')]}
         showWeekNumber
